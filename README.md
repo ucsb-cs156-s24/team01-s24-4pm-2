@@ -11,6 +11,7 @@ Lab instructions: <https://ucsb-cs156.github.io/s24/lab/team01.html>
 |  Yusheng  | WhrainySu       | `TidesQueryService`         | `TidesController`         |
 |  Kriteen  | kriteenshrestha | `UniversityQueryService`    | `UniversityController`    |
 |  Kelly    | kmflippo        | `ZipCodeQueryService`       | `ZipCodeController`       |
+|  Julia    | jchanDev        | `JokeQueryService`          | `JokeController`          |
 ```
 
 Repo: https://github.com/ucsb-cs156-s24/team01-s24-4pm-2
