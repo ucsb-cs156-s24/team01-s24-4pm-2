@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -20,13 +22,15 @@ import org.springframework.web.client.HttpClientErrorException;
 @Service
 public class PublicHolidayQueryService {
 
+    ObjectMapper mapper = new ObjectMapper();
+
     private final RestTemplate restTemplate;
 
     public PublicHolidayQueryService(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder.build();
     }
 
-    public static final String ENDPOINT = "https://date.nager.at/api/v2/publicholidays/{year}/{countryCode}";
+    public static final String ENDPOINT = "https://date.nager.at/api/v2/publicholidays/{countryCode}/{year}";
 
     public String getJSON(String year, String countryCode) throws HttpClientErrorException {
         log.info("year={}, countryCode={}", year, countryCode);
