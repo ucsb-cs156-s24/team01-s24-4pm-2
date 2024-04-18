@@ -26,7 +26,7 @@ public class JokeQueryServiceTests {
     public void test_getJSON() {
 
         String category = "Programming";
-        int numJokes = 2;
+        String numJokes = "2";
         String expectedURL = JokeQueryService.ENDPOINT.replace("{category}", category)
                 .replace("{numJokes}", String.valueOf(numJokes));
 
