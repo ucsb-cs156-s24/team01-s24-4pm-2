@@ -42,10 +42,10 @@ public class JokeControllerTests {
   
     String fakeJsonResult="{ \"fake\" : \"result\" }";
     String category = "Programming";
-    int numJokes = 2;
+    String numJokes = "2";
     when(mockJokeQueryService.getJSON(eq(category),eq(numJokes))).thenReturn(fakeJsonResult);
 
-    String url = String.format("/api/jokes/get?amount=%s&category=%s",String.valueOf(numJokes), category);
+    String url = String.format("/api/jokes/get?amount=%s&category=%s",numJokes, category);
 
     MvcResult response = mockMvc
         .perform( get(url).contentType("application/json"))

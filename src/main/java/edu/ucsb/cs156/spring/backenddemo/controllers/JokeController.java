@@ -36,7 +36,7 @@ public class JokeController {
         @Parameter(name="Category", description="category of joke", example="Programming") @RequestParam String category
     ) throws JsonProcessingException {
         log.info("getJokes: amount={} Category={}", amount, category);
-        String result = jokeQueryService.getJSON(category, Integer.valueOf(amount));
+        String result = jokeQueryService.getJSON(category, amount);
         return ResponseEntity.ok().body(result);
     }
 
