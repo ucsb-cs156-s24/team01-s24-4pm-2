@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
 @Slf4j
+@Service
 public class JokeQueryService {
     ObjectMapper mapper = new ObjectMapper();
 
@@ -35,7 +36,7 @@ public class JokeQueryService {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-        Map<String, String> uriVariables = Map.of("amount", String.valueOf(numJokes),"category", category);
+        Map<String, String> uriVariables = Map.of("category", category, "numJokes", String.valueOf(numJokes));
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
                 uriVariables);
