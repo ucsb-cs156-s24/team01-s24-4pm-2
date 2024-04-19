@@ -40,6 +40,17 @@ public class JokeQueryService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
                 uriVariables);
+        System.out.print(re.getBody());
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+
+        
         return re.getBody();
     }
 }
