@@ -18,11 +18,24 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name="ZipCode info from _____")
+@Tag(name="ZipCode info from http://api.zippopotam.us/us/")
 @Slf4j
 @RestController
-@RequestMapping("/api/earthquakes")
+@RequestMapping("/api/zipcodes")
 public class ZipCodeController {
-    
+    ObjectMapper mapper = new ObjectMapper();
+
+    @Autowired
+    ZipCodeQueryService zipCodeQueryService;
+
+    @Operation(summary = "Get a place name and info based on zipcode", description = "JSON return format documented here: https://api.zippopotam.us/")
+    @GetMapping("/get")
+    public ResponseEntity<String> getZipCodes(
+        @Parameter(name="zipcode", description="zipcode", example="90277") @RequestParam String zipcode
+    ) throws JsonProcessingException {
+        log.info("getZipCodes: zipcode={}", zipcode);
+        String result = zipCodeQueryService.getJSON(zipcode);
+        return ResponseEntity.ok().body(result);
+    }
 }
  
