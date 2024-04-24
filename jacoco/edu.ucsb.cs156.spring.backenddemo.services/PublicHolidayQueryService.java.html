@@ -3,9 +3,9 @@
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,11 +18,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
-
-<span class="fc" id="L22">@Slf4j</span>
+<span class="fc" id="L21">@Slf4j</span>
 @Service
 public class PublicHolidayQueryService {
 
+<span class="fc" id="L25">    ObjectMapper mapper = new ObjectMapper();</span>
 
     private final RestTemplate restTemplate;
 
@@ -30,7 +30,7 @@ public class PublicHolidayQueryService {
 <span class="fc" id="L30">        restTemplate = restTemplateBuilder.build();</span>
 <span class="fc" id="L31">    }</span>
 
-    public static final String ENDPOINT = &quot;https://date.nager.at/api/v2/publicholidays/{year}/{countryCode}&quot;;
+    public static final String ENDPOINT = &quot;https://date.nager.at/api/v2/publicholidays/{countryCode}/{year}&quot;;
 
     public String getJSON(String year, String countryCode) throws HttpClientErrorException {
 <span class="fc" id="L36">        log.info(&quot;year={}, countryCode={}&quot;, year, countryCode);</span>
@@ -45,8 +45,6 @@ public class PublicHolidayQueryService {
                 uriVariables);
 <span class="fc" id="L46">        return re.getBody();</span>
     }
-
-   
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
